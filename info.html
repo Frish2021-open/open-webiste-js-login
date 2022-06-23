@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>用户信息</title>
+	</head>
+	<body>
+		<div><span>姓名:</span><span id="name"></span></div>
+		<div><span>手机号:</span><span id="tel"></span></div>
+	</body>
+	<script type="text/javascript">
+		// 获取到我们传过来的参数  接收参数
+		let id = window.location.search.slice(1);
+		console.log(id);
+		// 应为我们是把本地存储数据的长度来当做id的所有我们可以通过id获取说有的数据
+		let key = localStorage.key(id); // 获取对应的key钥匙
+		let data = localStorage.getItem(key); // 再通过key获取对应的数据
+		console.log(data); // 这是是字符串
+		let info = JSON.parse(data) // 将字符串转换为对象
+		console.log(info); // 对象
+		
+		// 输出姓名
+		document.getElementById("name").innerText = info.name
+		// 输出手机号
+		document.getElementById("tel").innerText = info.tel
+	</script>
+</html>
